@@ -1,0 +1,6 @@
+*.py text eol=LF
+*.txt text eol=LF
+*.proto text eol=LF
+*.sh text eol=LF
+
+*.exe binary
