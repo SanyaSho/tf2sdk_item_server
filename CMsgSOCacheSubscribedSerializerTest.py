@@ -74,7 +74,7 @@ class CMsgSOCacheSubscribedSerializerTest:
 		def add_item_with_paintkit( itemid: int = -1 ):
 			paintkit_attribs = [
 				#self.attrib_helper.allocate_item_attribute_int_name( "paintkit_proto_def_index",	144 ),
-				#self.attrib_helper.allocate_item_attribute_int_name( "set_item_texture_wear",	1053609165 ),
+				#self.attrib_helper.allocate_item_attribute_int_name( "set_item_texture_wear",		1053609165 ),
 				#self.attrib_helper.allocate_item_attribute_int_name( "custom_paintkit_seed_lo",	687649116 ),
 				#self.attrib_helper.allocate_item_attribute_int_name( "custom_paintkit_seed_hi",	320889421 )
 
@@ -131,16 +131,16 @@ class CMsgSOCacheSubscribedSerializerTest:
 			# taken from TF2C b4 items_game.txt
 			valve_rocket_launcher_attributes = [
 				# Unusual Effect: Flying Bits
-				self.attrib_helper.allocate_item_attribute_float_name( "attach particle effect",	2.0 ),
+				self.attrib_helper.allocate_item_attribute_float_name( "attach particle effect",		2.0 ),
 
 				# +1009900% damage bonus
-				self.attrib_helper.allocate_item_attribute_float_name( "damage bonus",		10100.0 ),
+				self.attrib_helper.allocate_item_attribute_float_name( "damage bonus",			10100.0 ),
 
 				# +109900% clip size
-				self.attrib_helper.allocate_item_attribute_float_name( "clip size bonus",		1100.0 ),
+				self.attrib_helper.allocate_item_attribute_float_name( "clip size bonus",			1100.0 ),
 
 				# +75% faster firing speed
-				self.attrib_helper.allocate_item_attribute_float_name( "fire rate bonus",		0.25 ),
+				self.attrib_helper.allocate_item_attribute_float_name( "fire rate bonus",			0.25 ),
 
 				# On Hit: Gain up to +250 health
 				self.attrib_helper.allocate_item_attribute_float_name( "heal on hit for slowfire",	250.0 ),
@@ -186,7 +186,7 @@ class CMsgSOCacheSubscribedSerializerTest:
 		def give_item_with_unusual_effect( item: int, effect_list: dict ):
 			for i in effect_list:
 				effect_attributes = [
-					self.attrib_helper.allocate_item_attribute_float_name( "attach particle effect",	float( i ) ),
+					self.attrib_helper.allocate_item_attribute_float_name( "attach particle effect",		float( i ) ),
 					self.attrib_helper.allocate_item_attribute_string_name( "custom name attr",		f"Effect: {i}" )
 				]
 
@@ -274,16 +274,16 @@ class CMsgSOCacheSubscribedSerializerTest:
 
 
 		# CASUAL: Level: 150 Tier: 8
-		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_Casual_12v12_Rank,				150,	0,		0 )
-		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_Casual_12v12_Rank_PlayerAcknowledged,	150,	0,		0 )
-		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_Casual_XP,					10000000,	0,		0 )
-		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_Casual_XP_PlayerAcknowledged,		10000000,	0,		0 )
+		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_Casual_12v12_Rank,				150,	0,	0 )
+		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_Casual_12v12_Rank_PlayerAcknowledged,	150,	0,	0 )
+		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_Casual_XP,					10000000,	0,	0 )
+		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_Casual_XP_PlayerAcknowledged,		10000000,	0,	0 )
 
 		# COMPETITIVE: Rank: Death Merchant, Wins: 10, Games played: 10, MMR: 1000000000
-		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_6v6_Rank,					13,		10,		10 )
-		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_6v6_Rank_PlayerAcknowledged,			13,		10,		10 )
-		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_6v6_GLICKO,					1000000000,	0,		0 )
-		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_6v6_GLICKO_PlayerAcknowledged,		1000000000,	0,		0 )
+		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_6v6_Rank,					13,		10,	10 )
+		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_6v6_Rank_PlayerAcknowledged,			13,		10,	10 )
+		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_6v6_GLICKO,					1000000000,	0,	0 )
+		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_6v6_GLICKO_PlayerAcknowledged,		1000000000,	0,	0 )
 
 
 		#self.serializer.dump_message()
