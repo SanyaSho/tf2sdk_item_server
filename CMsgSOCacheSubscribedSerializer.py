@@ -193,13 +193,14 @@ class CMsgSOCacheSubscribedSerializer:
 		info = self.generate_object_if_not_exists( EEconTypeID.k_EEconTypeGameAccountClient )
 
 		data = CSOEconGameAccountClient()
-		data.additional_backpack_slots = client_info["additional_backpack_slots"] if "additional_backpack_slots" in client_info else EEconConstants.MAX_NUM_BACKPACK_SLOTS
+		data.additional_backpack_slots = client_info["additional_backpack_slots"] if "additional_backpack_slots" in client_info else EEconConstants.MAX_NUM_FULL_BACKPACK_SLOTS
 		data.competitive_access = True
 		data.phone_identifying = True
 
 		info.object_data.append( data.SerializeToString() )
 
 	# 19
+	# 28
 	# 39
 
 	# Matchmaking rating (MSGID: 2007)
@@ -219,6 +220,12 @@ class CMsgSOCacheSubscribedSerializer:
 		data.rating_tertiary = rating_tertiary
 
 		stats.object_data.append( data.SerializeToString() )
+
+	# 44
+	# 45
+	# 46
+	# 2
+	# 40
 
 	#
 	# Utility functions

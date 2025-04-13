@@ -297,7 +297,7 @@ class CMsgSOCacheSubscribedSerializerTest:
 
 		# Append player info
 		self.serializer.add_client_info(
-			{ "additional_backpack_slots": EEconConstants.MAX_NUM_BACKPACK_SLOTS }
+			{ "additional_backpack_slots": EEconConstants.MAX_NUM_FULL_BACKPACK_SLOTS }
 		)
 
 
