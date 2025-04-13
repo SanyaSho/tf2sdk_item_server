@@ -21,7 +21,7 @@ pi = PlayerInfo()
 # Parse items_game.txt
 isp = ItemSchemaParser()
 
-gcmsgtest = CMsgSOCacheSubscribedSerializerTest( CMsgSOCacheSubscribedSerializer( isp, pi.PLAYER_STEAMID, pi.PLAYER_ACCNTID ) )
+gcmsgtest = CMsgSOCacheSubscribedSerializerTest( isp, CMsgSOCacheSubscribedSerializer( pi.PLAYER_STEAMID, pi.PLAYER_ACCNTID ) )
 gcmsgtest.serialize_test_message()
 token = gcmsgtest.serializer.get_message_as_base64()
 

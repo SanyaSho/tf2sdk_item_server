@@ -6,9 +6,8 @@ from gcsdk_pb2 import *
 # Shared constants
 from TFEnums import *
 
+# For dump_message()
 from CMsgSOCacheSubscribedParser import CMsgSOCacheSubscribedParser
-from ItemSchemaParser import ItemSchemaParser
-from EconAttributeHelper import EconAttributeHelper
 
 def clamp( val: int, min: int, max: int ):
 	if val > max:
@@ -24,10 +23,7 @@ class CMsgSOCacheSubscribedSerializer:
 	steamid: int
 	account_id: int
 
-	isp: ItemSchemaParser
-	attrib_helper: EconAttributeHelper
-
-	def __init__( self, isp: ItemSchemaParser, owner_steamid: int, owner_account_id: int ):
+	def __init__( self, owner_steamid: int, owner_account_id: int ):
 		"""
 		:param owner_steamid: User's SteamID
 		:param owner_account_id: User's AccountID
@@ -44,9 +40,6 @@ class CMsgSOCacheSubscribedSerializer:
 
 		self.steamid = owner_steamid
 		self.account_id = owner_account_id
-
-		self.isp = isp
-		self.attrib_helper = EconAttributeHelper( self.isp.get_all_attributes() )
 
 	# Class presets (MSGID: 36)
 	def add_class_loadout_preset( self, class_id: int, active_preset_id: int ):
