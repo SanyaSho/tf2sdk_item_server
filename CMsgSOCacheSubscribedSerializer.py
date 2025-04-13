@@ -27,7 +27,7 @@ class CMsgSOCacheSubscribedSerializer:
 	isp: ItemSchemaParser
 	attrib_helper: EconAttributeHelper
 
-	def __init__( self, owner_steamid: int, owner_account_id: int ):
+	def __init__( self, isp: ItemSchemaParser, owner_steamid: int, owner_account_id: int ):
 		"""
 		:param owner_steamid: User's SteamID
 		:param owner_account_id: User's AccountID
@@ -45,7 +45,7 @@ class CMsgSOCacheSubscribedSerializer:
 		self.steamid = owner_steamid
 		self.account_id = owner_account_id
 
-		self.isp = ItemSchemaParser()
+		self.isp = isp
 		self.attrib_helper = EconAttributeHelper( self.isp.get_all_attributes() )
 
 	# Class presets (MSGID: 36)

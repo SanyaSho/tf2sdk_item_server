@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from AuthTicketValidator import AuthTicketValidator
 from CMsgSOCacheSubscribedSerializer import CMsgSOCacheSubscribedSerializer
 from CMsgSOCacheSubscribedSerializerTest import CMsgSOCacheSubscribedSerializerTest
+from ItemSchemaParser import ItemSchemaParser
 from PlayerConstants import PlayerInfo
 
 # Shared constants
@@ -17,7 +18,10 @@ app = FastAPI()
 # Initialize PlayerInfo (try to parse player_info.txt)
 pi = PlayerInfo()
 
-gcmsgtest = CMsgSOCacheSubscribedSerializerTest( CMsgSOCacheSubscribedSerializer( pi.PLAYER_STEAMID, pi.PLAYER_ACCNTID ) )
+# Parse items_game.txt
+isp = ItemSchemaParser()
+
+gcmsgtest = CMsgSOCacheSubscribedSerializerTest( CMsgSOCacheSubscribedSerializer( isp, pi.PLAYER_STEAMID, pi.PLAYER_ACCNTID ) )
 gcmsgtest.serialize_test_message()
 token = gcmsgtest.serializer.get_message_as_base64()
 
