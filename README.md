@@ -8,7 +8,7 @@ Simple inventory manager for [TF2SDK](https://www.teamfortress.com/post.php?id=2
 ## How to use?
 ### SERVER-SIDE
 1. Generate the protobuf messages using the `./comp_proto.sh` script. 
-2. Generate an venv using the `python -m venv .venv` command.
+2. Generate and enter an venv using the `python -m venv .venv` and `source .venv/Scripts/activate` (Windows, Git-Bash) / `source .venv/bin/activate` (Linux) commands.
 3. Install required packages using `pip install -r requirements.txt`.
 4. Add your SteamID and AccountID to the `scripts/player_info.json` file. You can get both of them using [SteamDB](https://steamdb.info).
 5. Run a webserver using the `./run_webserver.sh` script.
