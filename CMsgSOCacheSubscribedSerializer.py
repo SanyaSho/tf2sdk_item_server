@@ -200,7 +200,18 @@ class CMsgSOCacheSubscribedSerializer:
 		info.object_data.append( data.SerializeToString() )
 
 	# 19
-	# 28
+
+	# Map contributions (MSGID: 28)
+	def add_map_contribution_data( self, map_def_index: int, contribution_level: int ):
+		mapcontrib = self.generate_object_if_not_exists( EEconTypeID.k_EEconTypeMapContribution )
+
+		data = CSOTFMapContribution()
+		data.account_id = self.account_id
+		data.def_index = map_def_index
+		data.contribution_level = contribution_level
+
+		mapcontrib.object_data.append( data.SerializeToString() )
+
 	# 39
 
 	# Matchmaking rating (MSGID: 2007)

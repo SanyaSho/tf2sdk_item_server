@@ -292,6 +292,13 @@ class CMsgSOCacheSubscribedSerializerTest:
 		#(id, slot) = give_all_items( id, slot )
 
 
+		# Add the "World Traveler's Hat"
+		self.serializer.add_item_to_inventory( { "id": id, "slot": slot, "def_index": 1899, "level": 20, "quality": EEconItemQuality.AE_UNIQUE } )
+		# Must increment this everytime you touch the inventory
+		id += 1
+		slot += 1
+
+
 		print( f"Total items added: {id - 1}, used slots: {slot - 1}" )
 
 
@@ -299,6 +306,15 @@ class CMsgSOCacheSubscribedSerializerTest:
 		self.serializer.add_client_info(
 			{ "additional_backpack_slots": EEconConstants.MAX_NUM_FULL_BACKPACK_SLOTS }
 		)
+
+		# Add max contribution level for each map token (used by World Traveler's Hat)
+		for def_index in self.serializer.isp.get_all_items():
+			item = self.serializer.isp.get_all_items()[def_index]
+
+			if "prefab" not in item or "map_token" not in item["prefab"]:
+				continue
+
+			self.serializer.add_map_contribution_data( int( def_index ), random.randrange( 0, 200, 25 ) )
 
 
 		# CASUAL: Level: 150 Tier: 8
