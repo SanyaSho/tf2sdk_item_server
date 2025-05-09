@@ -283,3 +283,30 @@ message CSOTFMatchResultPlayerStats
 	optional uint32 map_index             = 26;
 	optional uint32 winning_team		  = 27;
 }
+
+
+// MSG: k_EEconTypeNotification (42)
+message CMsgGCNotification
+{
+	// Message GC sends to clients when they have a pending notification
+	enum NotificationType
+	{
+		NOTIFICATION_REPORTED_PLAYER_BANNED          = 0;
+		NOTIFICATION_CUSTOM_STRING                   = 1;
+		NOTIFICATION_MM_BAN_DUE_TO_EXCESSIVE_REPORTS = 2;
+		NOTIFICATION_REPORTED_PLAYER_WAS_BANNED      = 3;
+		// A must-confirm-as-seen pop-up notification with a custom support message.  If the string is a localization
+		// token, comes from the *GC* localized strings table, and is sent down based on client's current locale
+		NOTIFICATION_SUPPORT_MESSAGE                 = 4;
+
+		// Make sure this is at the end
+		NOTIFICATION_NUM_TYPES = 5;
+	};
+
+	optional uint64 notification_id = 1 [(key_field) = true ];
+	optional uint32 account_id = 2;
+	// 0 -> doesn't expire
+	optional fixed32 expiration_time = 3;
+	optional NotificationType type = 4 [ default = NOTIFICATION_CUSTOM_STRING ];
+	optional string notification_string = 5;
+}

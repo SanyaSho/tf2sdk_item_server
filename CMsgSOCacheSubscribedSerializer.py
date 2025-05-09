@@ -231,6 +231,31 @@ class CMsgSOCacheSubscribedSerializer:
 	# 2
 	# 40
 
+	# TF Notification (MSGID: 42)
+	def add_notification( self, id: int, lifetime: float, type: ENotificationType = ENotificationType.NOTIFICATION_SUPPORT_MESSAGE, custom_string: str = None ):
+		"""
+		:param id: Notification ID
+		:type id: int
+		:param lifetime: Notification life time (0 - always show)
+		:type lifetime: float
+		:param type: Notification type (see gcsdk.proto)
+		:type type: ENotificationType
+		:param custom_string: Notification custom string (only if type = 4)
+		:type custom_string: str
+		"""
+
+		notif = self.generate_object_if_not_exists( EEconTypeID.k_EEconTypeNotification )
+
+		data = CMsgGCNotification()
+		data.notification_id = id
+		data.account_id = self.account_id
+		data.expiration_time = lifetime
+		data.type = type
+		if custom_string:
+			data.notification_string = custom_string
+
+		notif.object_data.append( data.SerializeToString() )
+
 	#
 	# Utility functions
 	#

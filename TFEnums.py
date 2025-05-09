@@ -170,6 +170,7 @@ class EEconTypeID:
 	k_EEconTypeQuestMapRewardPurchase				= 46
 	k_EEconTypePlayerInfo						= 2
 	k_EEConTypeMatchResultPlayerInfo				= 40
+	k_EEconTypeNotification						= 42
 
 
 class EGCTFProtoObjectTypes:
@@ -238,3 +239,16 @@ class EEconItemOrigin:
 	kEconItemOrigin_CYOABloodMoneyPurchase				= 27
 	kEconItemOrigin_Paintkit					= 28
 	kEconItemOrigin_UntradableFreeContractReward			= 29
+
+
+class ENotificationType:
+	NOTIFICATION_REPORTED_PLAYER_BANNED				= 0
+	NOTIFICATION_CUSTOM_STRING					= 1
+	NOTIFICATION_MM_BAN_DUE_TO_EXCESSIVE_REPORTS			= 2
+	NOTIFICATION_REPORTED_PLAYER_WAS_BANNED				= 3
+	# A must-confirm-as-seen pop-up notification with a custom support message.  If the string is a localization
+	# token, comes from the *GC* localized strings table, and is sent down based on client's current locale
+	NOTIFICATION_SUPPORT_MESSAGE					= 4
+
+	# Make sure this is at the end
+	NOTIFICATION_NUM_TYPES						= 5

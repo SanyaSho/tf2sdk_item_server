@@ -12,6 +12,7 @@ class CMsgSOCacheSubscribedSerializerTest:
 
 	last_id = 1
 	last_slot = 1
+	last_notif = 1
 
 	isp: ItemSchemaParser = None
 	attrib_helper: EconAttributeHelper = None
@@ -35,6 +36,10 @@ class CMsgSOCacheSubscribedSerializerTest:
 
 		self.last_id += 1
 		self.last_slot += 1
+
+	def add_notification( self, lifetime: float, type: ENotificationType = ENotificationType.NOTIFICATION_SUPPORT_MESSAGE, custom_string: str = None ):
+		self.serializer.add_notification( self.last_notif, lifetime, type, custom_string )
+		self.last_notif += 1
 
 	def serialize_test_message( self ):
 		# Set default active loadout preset for each class
@@ -301,5 +306,21 @@ class CMsgSOCacheSubscribedSerializerTest:
 		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_6v6_GLICKO,					1000000000,	0,	0 )
 		self.serializer.add_matchmaking_rating_data( EMMRating.k_nMMRating_6v6_GLICKO_PlayerAcknowledged,		1000000000,	0,	0 )
 
+
+		# Send some notifications
+		#self.add_notification( 0, 0, "NOTIFICATION_REPORTED_PLAYER_BANNED" ) # NOTIFICATION_REPORTED_PLAYER_BANNED
+		#self.add_notification( 0, 1, "Hello, World!" ) # NOTIFICATION_CUSTOM_STRING
+		#self.add_notification( 0, 2, "You were banned from the Official GO MatchMaking." ) # NOTIFICATION_MM_BAN_DUE_TO_EXCESSIVE_REPORTS
+		#self.add_notification( 0, 3, "NOTIFICATION_REPORTED_PLAYER_WAS_BANNED" )
+		#self.add_notification( 0, 4, ":heavyweightsad:" ) # NOTIFICATION_SUPPORT_MESSAGE
+
+		# Notify user about TF2SDK Inventory Server
+		notif_msg = f"""
+		Hello {self.serializer.steamid}!
+		You are using a custom TF2 WebApi Inventory Server (https://github.com/SanyaSho/tf2sdk_inventory_server).
+		
+		Currently you have {self.last_id - 1} items in your inventory.
+		"""
+		self.add_notification( 0, ENotificationType.NOTIFICATION_SUPPORT_MESSAGE, notif_msg )
 
 		#self.serializer.dump_message()
