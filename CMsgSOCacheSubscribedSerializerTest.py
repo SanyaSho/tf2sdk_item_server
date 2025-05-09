@@ -118,9 +118,9 @@ class CMsgSOCacheSubscribedSerializerTest:
 				item = self.isp.get_all_items()[i]
 
 				if ("prefab" in item and "taunt" in item["prefab"]) or ("taunt" in item) or ("item_slot" in item and "taunt" in item["item_slot"]):
-					self.serializer.add_item_to_inventory(
+					self.add_item_to_inventory(
 						{
-							"def_index": i
+							"def_index": int( i )
 						}
 					)
 
@@ -181,6 +181,22 @@ class CMsgSOCacheSubscribedSerializerTest:
 
 		#give_item_with_all_qualities( 18 )
 		#give_item_with_all_qualities( 1071 )
+
+
+		def give_item_with_killstreak_effect( item: int ):
+			for i in range( 1, 8 ): # Valid effects are located in //hl2_src/game/client/tf/c_tf_player.cpp in g_KillStreakEffectsBase array
+				attr = [
+					self.attrib_helper.allocate_item_attribute_float_name( "killstreak idleeffect", i )
+				]
+
+				self.add_item_to_inventory(
+					{
+						"def_index": item,
+						"attributes": attr
+					}
+				)
+
+		#give_item_with_killstreak_effect( 13 )
 
 
 		def give_item_with_unusual_effect( item: int, effect_list: dict ):
@@ -270,7 +286,7 @@ class CMsgSOCacheSubscribedSerializerTest:
 			if "prefab" not in item or "map_token" not in item["prefab"]:
 				continue
 
-			self.serializer.add_map_contribution_data( int( def_index ), random.randrange( 0, 200, 25 ) )
+			self.serializer.add_map_contribution_data( int( def_index ), 200 ) # $200 for all 140+ maps?!
 
 
 		# CASUAL: Level: 150 Tier: 8
