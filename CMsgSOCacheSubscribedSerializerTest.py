@@ -314,10 +314,10 @@ class CMsgSOCacheSubscribedSerializerTest:
 		#self.add_notification( 0, 3, "NOTIFICATION_REPORTED_PLAYER_WAS_BANNED" )
 		#self.add_notification( 0, 4, ":heavyweightsad:" ) # NOTIFICATION_SUPPORT_MESSAGE
 
-		# Notify user about TF2SDK Inventory Server
+		# Notify user about TF2SDK Item Server
 		notif_msg = f"""
 		Hello {self.serializer.steamid}!
-		You are using a custom TF2 WebApi Inventory Server (https://github.com/SanyaSho/tf2sdk_inventory_server).
+		You are using a custom TF2 WebApi Item Server (https://github.com/SanyaSho/tf2sdk_item_server).
 		
 		Currently you have {self.last_id - 1} items in your inventory.
 		"""
